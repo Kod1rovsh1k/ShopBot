@@ -1,12 +1,21 @@
-This template for <b>telegram bot</b>
+**🏠 Project struct**
 
->How install
->>git clone https://github.com/Kod1rovsh1k/TemplateBot.git
->
-> > py -m venv .venv
-> 
-> >.venv\Scripts\activate
-> 
-> > pip install -r requirements.txt
-> 
-> >py main.py
+```
+📂 RootDir/
+|
+|-- 📝 README.md
+|-- 🔖 requirements.txt
+|-- 📦 pyproject.toml
+|-- 📮 .gitignore
+|
+|-- 📂 src/
+    |
+    |-- 🌱 .env
+    |-- 🚀 main.py
+    |-- 📂 bot/
+        |
+        |-- 📦 __init__.py
+        |-- 📂 configs/
+        |-- 📂 handlers/
+        |-- 📂 keyboards/
+```

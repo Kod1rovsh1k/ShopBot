@@ -1,12 +1,10 @@
 from aiogram import Dispatcher
 
-from .start import router as user_start
+from .user import user_handler
 
 
 async def handler_manager(dp: Dispatcher) -> None:
-    dp.include_routers(
-        user_start,
-    )
+    await user_handler(dp)
 
 
 __all__ = [

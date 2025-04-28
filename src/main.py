@@ -2,6 +2,7 @@ import asyncio
 
 from bot import *
 
+
 async def main() -> None:
     await bot_run()
 

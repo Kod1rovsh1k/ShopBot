@@ -15,6 +15,7 @@ class BotConfig:
     load_dotenv()
 
     TOKEN = os.getenv('TOKEN')
+
     def __init__(self) -> None:
         try:
             if not os.path.isfile(".env"):
@@ -25,4 +26,5 @@ class BotConfig:
 
             self.bot = Bot(token=self.TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
         except TokenValidationError:
-            print(f'{Fore.RED}[-] {Fore.WHITE}Token validation error, fill out just now file ({Fore.GREEN}.env{Fore.WHITE})')
+            print(
+                f'{Fore.RED}[-] {Fore.WHITE}Token validation error, fill out just now file ({Fore.GREEN}.env{Fore.WHITE})')

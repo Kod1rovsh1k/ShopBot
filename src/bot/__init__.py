@@ -24,6 +24,7 @@ async def bot_run() -> None:
     except AttributeError:
         pass
 
+
 __all__ = [
     'bot_run',
     'Fore',
