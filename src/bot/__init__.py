@@ -7,6 +7,7 @@ from aiogram import Dispatcher
 
 from .configs import *
 from .handlers import *
+from .database import *
 
 init(autoreset=True)
 
@@ -16,6 +17,7 @@ setup = BotConfig()
 
 async def bot_run() -> None:
     try:
+        Database()
         logging.basicConfig(level=logging.INFO, stream=sys.stdout)
         await handler_manager(dp)
         await setup.bot.delete_webhook(drop_pending_updates=True)
