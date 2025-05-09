@@ -16,6 +16,6 @@ def user_main_menu_ikb(chat_id: int) -> InlineKeyboardMarkup:
     ])
 
     if chat_id in [int(os.getenv('CHAT_ID'))]:
-        ikb.inline_keyboard.append([InlineKeyboardButton(text="🎈 Admin", callback_data="admin")])
+        ikb.inline_keyboard.append([InlineKeyboardButton(text="🎈 Admin", callback_data="admin-panel")])
 
     return ikb
