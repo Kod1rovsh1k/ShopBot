@@ -22,6 +22,7 @@ async def cmd_start(msg: types.Message) -> types.Message:
         lastname=msg.from_user.last_name,
         date_reg=f"{now:%Y-%m-%d %H:%M:%S}",
     )
+    await user_query.check_user_status()
 
     return await msg.answer(
         f'🎆 <b>Menu:</b>',

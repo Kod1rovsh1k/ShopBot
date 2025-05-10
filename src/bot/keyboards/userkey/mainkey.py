@@ -1,12 +1,9 @@
+import os
+
 from aiogram.types import (
     InlineKeyboardMarkup, InlineKeyboardButton,
 )
-import os
 
-def user_agreement() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="✅ Agree", callback_data='agree')],
-    ])
 
 def user_main_menu_ikb(chat_id: int) -> InlineKeyboardMarkup:
     ikb = InlineKeyboardMarkup(inline_keyboard=[

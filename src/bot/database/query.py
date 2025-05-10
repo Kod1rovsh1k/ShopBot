@@ -1,3 +1,5 @@
+import asyncio
+
 from .models import *
 
 from ..configs import *
@@ -13,6 +15,36 @@ class UserQuery:
         with db.Session() as session:
             users = session.query(User).all()
             return users
+
+    import asyncio
+    async def check_user_status(self):
+        users = self.getAllUsers()
+        batch_size = 100  # Размер пакета
+        tasks = []
+        for i in range(0, len(users), batch_size):
+            batch = users[i:i + batch_size]
+            tasks.append(self.check_batch_status(batch))
+        await asyncio.gather(*tasks)
+
+    async def check_batch_status(self, batch):
+        for user in batch:
+            await self.check_single_user_status(user)
+            await asyncio.sleep(0.1)  # Задержка между отправками
+
+    async def check_single_user_status(self, user):
+        try:
+            with db.Session() as session:
+                user_record = session.query(User).filter_by(chat_id=user.chat_id).first()
+                if user_record and user_record.bot_block == 'true':
+                    user_record.bot_block = 'false'
+                    session.commit()
+        except Exception as e:
+            if "blocked" in str(e).lower():
+                with db.Session() as session:
+                    user_record = session.query(User).filter_by(chat_id=user.chat_id).first()
+                    if user_record:
+                        user_record.bot_block = 'true'
+                        session.commit()
 
     def addUser(self, chat_id: int, language: str, username: str, firstname: str, lastname: str, date_reg: str) -> User:
         with db.Session() as session:
